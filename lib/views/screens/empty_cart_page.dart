@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:marketky/constant/app_color.dart';
+import 'package:marketky/constant/dimentions.dart';
+import 'package:marketky/views/screens/Store%20app/store_home.dart';
 import 'package:marketky/views/screens/page_switcher.dart';
 
 class EmptyCartPage extends StatelessWidget {
@@ -11,20 +14,25 @@ class EmptyCartPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColor.primary,
         elevation: 0,
-        title: Column(
-          children: [
-            Text('Your Cart', style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w600)),
-            Text('Empty', style: TextStyle(fontSize: 10, color: Colors.black.withOpacity(0.7))),
-          ],
+        title: Text(
+          'Your Cart',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: Dimentions.font20,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.back();
           },
-          icon: SvgPicture.asset('assets/icons/Arrow-left.svg'),
-        ), systemOverlayStyle: SystemUiOverlayStyle.light,
+          icon: Icon(Icons.arrow_back_ios),
+          iconSize: Dimentions.iconsize24,
+          color: Colors.white,
+        ),
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -34,40 +42,56 @@ class EmptyCartPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 164,
-              height: 164,
-              margin: EdgeInsets.only(bottom: 32),
+              width: Dimentions.width45 * 5,
+              height: Dimentions.height45 * 5,
+              margin: EdgeInsets.only(bottom: Dimentions.height30),
               child: SvgPicture.asset('assets/icons/Paper Bag.svg'),
             ),
             Text(
               'Empty Cart  ☹️',
               style: TextStyle(
                 color: AppColor.secondary,
-                fontSize: 24,
+                fontSize: Dimentions.font26,
                 fontWeight: FontWeight.w700,
                 fontFamily: 'poppins',
               ),
             ),
             Container(
-              margin: EdgeInsets.only(bottom: 48, top: 12),
+              margin: EdgeInsets.only(
+                  bottom: Dimentions.height45 * 4,
+                  top: Dimentions.height12 / 10),
               child: Text(
                 'Go to home and explore our interesting \nproducts and add to cart',
-                style: TextStyle(color: AppColor.secondary.withOpacity(0.8)),
+                style: TextStyle(
+                  color: AppColor.secondary.withOpacity(0.8),
+                  fontSize: Dimentions.font20,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => PageSwitcher()));
+                Get.off(StoreHome());
               },
               child: Text(
                 'Start Shopping',
-                style: TextStyle(fontWeight: FontWeight.w600, color: AppColor.secondary),
+                style: TextStyle(
+                  fontSize: Dimentions.font20,
+                  fontWeight: FontWeight.w600,
+                  color: AppColor.secondary,
+                ),
               ),
               style: ElevatedButton.styleFrom(
-                foregroundColor: AppColor.primary, padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16), backgroundColor: AppColor.border,
+                foregroundColor: AppColor.primary,
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimentions.width30,
+                  vertical: Dimentions.height15,
+                ),
+                backgroundColor: AppColor.border,
                 elevation: 0,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(Dimentions.radius15),
+                ),
                 shadowColor: Colors.transparent,
               ),
             ),

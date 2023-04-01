@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:marketky/constant/app_color.dart';
-import 'package:marketky/views/screens/login_page.dart';
-import 'package:marketky/views/screens/otp_verification_page.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -35,7 +34,7 @@ class _LoginPageState extends State<RegisterPage> {
             )),
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.back();
           },
           icon: SvgPicture.asset('assets/icons/Arrow-left.svg'),
         ),
@@ -47,8 +46,7 @@ class _LoginPageState extends State<RegisterPage> {
         alignment: Alignment.center,
         child: TextButton(
           onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => LoginPage()));
+            Get.toNamed("/LoginPage");
           },
           style: TextButton.styleFrom(
             foregroundColor: AppColor.secondary.withOpacity(0.1),
@@ -302,7 +300,7 @@ class _LoginPageState extends State<RegisterPage> {
               onPressed: () {
                 if (_formKey.currentState.validate()) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                     SnackBar(
+                    SnackBar(
                       backgroundColor: Colors.white,
                       content: Text(
                         'Processing Data',
@@ -317,8 +315,7 @@ class _LoginPageState extends State<RegisterPage> {
                     fullnameController.text,
                     usernameController.text,
                   );
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => OTPVerificationPage()));
+                  Get.toNamed("/OTPVerificationPage");
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(

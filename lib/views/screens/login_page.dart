@@ -4,8 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:marketky/constant/app_color.dart';
 import 'package:marketky/user_controller.dart';
-import 'package:marketky/views/screens/page_switcher.dart';
-import 'package:marketky/views/screens/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -16,7 +14,8 @@ class _LoginPageState extends State<LoginPage> {
   bool secourtext = true;
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailcontroller = TextEditingController();
-  var userController = Get.put(UserController());//use it to get email and show it in my app
+  var userController =
+      Get.put(UserController()); //use it to get email and show it in my app
   TextEditingController passwordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -28,16 +27,16 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          'Sign in',
+          '4'.tr,
           style: TextStyle(
             color: Colors.black,
-            fontSize: 14,
+            fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.back();
           },
           icon: SvgPicture.asset('assets/icons/Arrow-left.svg'),
         ),
@@ -50,8 +49,7 @@ class _LoginPageState extends State<LoginPage> {
         alignment: Alignment.center,
         child: TextButton(
           onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => RegisterPage()));
+            Get.toNamed("/RegisterPage");
           },
           style: TextButton.styleFrom(
             foregroundColor: AppColor.secondary.withOpacity(0.1),
@@ -61,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Dont have an account?',
+                '5'.tr,
                 style: TextStyle(
                   color: AppColor.secondary.withOpacity(0.7),
                   fontSize: 14,
@@ -69,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Text(
-                ' Sign up',
+                '6'.tr,
                 style: TextStyle(
                   color: AppColor.primary,
                   fontSize: 14,
@@ -92,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               margin: EdgeInsets.only(top: 20, bottom: 12),
               child: Text(
-                'Welcome Back Mate ! ❤️',
+                '7'.tr,
                 style: TextStyle(
                   color: AppColor.secondary,
                   fontWeight: FontWeight.w700,
@@ -104,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               margin: EdgeInsets.only(bottom: 32),
               child: Text(
-                'Enjoy the best shopping experience with Ahl, you will find all services and products in one place. ',
+                '2'.tr,
                 style: TextStyle(
                     color: AppColor.secondary.withOpacity(0.7),
                     fontSize: 12,
@@ -127,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
               controller: emailcontroller,
               autofocus: false,
               decoration: InputDecoration(
-                hintText: 'youremail@email.com',
+                hintText: '10'.tr,
                 prefixIcon: Container(
                   padding: EdgeInsets.all(12),
                   child: SvgPicture.asset('assets/icons/Message.svg',
@@ -161,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
               autofocus: false,
               obscureText: secourtext,
               decoration: InputDecoration(
-                hintText: '**********',
+                hintText: '8'.tr,
                 prefixIcon: Container(
                   padding: EdgeInsets.all(12),
                   child: SvgPicture.asset('assets/icons/Lock.svg',
@@ -202,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
               child: TextButton(
                 onPressed: () {},
                 child: Text(
-                  'Forgot Password ?',
+                  '9'.tr,
                   style: TextStyle(
                       fontSize: 12,
                       color: AppColor.secondary.withOpacity(0.5),
@@ -229,8 +227,7 @@ class _LoginPageState extends State<LoginPage> {
                       duration: Duration(milliseconds: 1000),
                     ),
                   );
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => PageSwitcher()));
+                  Get.toNamed("/PageSwitcher");
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
@@ -245,7 +242,7 @@ class _LoginPageState extends State<LoginPage> {
                 }
               },
               child: Text(
-                'Sign in',
+                '4'.tr,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,

@@ -30,7 +30,7 @@ class DummySearchWidget2 extends StatelessWidget {
                 ),
               ),
               Text(
-                'Find a product...',
+                'Find a products & categories...',
                 style: TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 14),
               ),
             ],

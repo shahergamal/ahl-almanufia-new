@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:marketky/constant/app_color.dart';
+import 'package:marketky/constant/dimentions.dart';
 import 'package:marketky/views/screens/page_switcher.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -29,7 +31,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.back();
           },
           icon: SvgPicture.asset('assets/icons/Arrow-left.svg'),
         ),
@@ -53,13 +55,16 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
             ),
           ),
           Container(
+            width: Dimentions.screenwidth,
             margin: EdgeInsets.only(bottom: 32),
             child: Row(
               children: [
                 Text(
                   'OTP Code sent to your email',
                   style: TextStyle(
-                      color: AppColor.secondary.withOpacity(0.7), fontSize: 14),
+                    color: AppColor.secondary.withOpacity(0.7),
+                    fontSize: 14,
+                  ),
                 ),
                 SizedBox(width: 8),
                 Text(
@@ -92,8 +97,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
             margin: EdgeInsets.only(top: 32, bottom: 16),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => PageSwitcher()));
+                Get.toNamed("/PageSwitcher");
               },
               child: Text(
                 'Verify',

@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:marketky/core/model/category_model.dart';
+import 'package:marketky/views/screens/category_screen.dart';
 
 // ignore: camel_case_types
 class customcartcategory extends StatelessWidget {
   const customcartcategory({
     Key key,
+    @required this.category,
     @required this.customimage,
     @required this.customtext,
-    @required this.onPressed,
+    this.customcolor,
   });
+  final CategoryModel category;
   final ImageProvider customimage;
   final String customtext;
-  final Function onPressed;
+  final Color customcolor;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: () {
+        Get.to(CategoryScreen(categories: category,));
+      },
       child: Padding(
         padding: const EdgeInsets.only(right: 10),
         child: Column(
@@ -32,10 +39,10 @@ class customcartcategory extends StatelessWidget {
               ),
             ),
             Text(
-              customtext,
+              category.name,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
+                color: customcolor,
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
               ),

@@ -5,7 +5,7 @@ import 'package:marketky/constant/app_color.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ImageViewer extends StatefulWidget {
-  final List<String> imageUrl;
+  final imageUrl;
   ImageViewer({@required this.imageUrl});
 
   @override

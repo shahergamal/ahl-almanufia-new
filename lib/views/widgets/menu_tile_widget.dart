@@ -29,7 +29,7 @@ class MenuTileWidget extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: AppColor.primarySoft, width: 1)),
+          border: Border(bottom: BorderSide(color: AppColor.primarySoft, width: 2)),
         ),
         child: Row(
           children: [

@@ -1,9 +1,11 @@
+import 'package:marketky/api_constants.dart';
+
 class ProductModel {
   //variables
   String id;
   String name;
   double price;
-  double oldPrice;
+  var oldPrice;
   String description;
   String mainImage;
   List productImages;
@@ -15,7 +17,9 @@ class ProductModel {
   int reviewCount;
   String dateAdded;
   List categories;
+  //
   List manufacturers;
+  //مواصفات المنتج
   List specifications;
 
   //json data
@@ -25,8 +29,8 @@ class ProductModel {
     price = data['price'];
     oldPrice = data['oldPrice'];
     description = data['description'];
-    mainImage = data['mainImage'];
-    productImages = data['productImages'];
+    mainImage = '${ApiConstants.baseUrl }'+'${data['mainImage']}';
+    productImages =data['productImages'];
     seoUrl = data['seoUrl'];
     metaTitle = data['metaTitle'];
     metaKeywords = data['metaKeywords'];

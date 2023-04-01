@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:marketky/constant/app_color.dart';
 import 'package:marketky/core/model/Review.dart';
 import 'package:marketky/views/widgets/custom_app_bar.dart';
@@ -14,7 +15,8 @@ class ReviewsPage extends StatefulWidget {
   _ReviewsPageState createState() => _ReviewsPageState();
 }
 
-class _ReviewsPageState extends State<ReviewsPage> with TickerProviderStateMixin {
+class _ReviewsPageState extends State<ReviewsPage>
+    with TickerProviderStateMixin {
   int _selectedTab = 0;
   getAverageRating() {
     double average = 0.0;
@@ -44,7 +46,7 @@ class _ReviewsPageState extends State<ReviewsPage> with TickerProviderStateMixin
               color: Colors.black.withOpacity(0.5),
             ),
             leftOnTap: () {
-              Navigator.of(context).pop();
+              Get.back();
             },
             rightOnTap: () {},
           ),
@@ -64,7 +66,10 @@ class _ReviewsPageState extends State<ReviewsPage> with TickerProviderStateMixin
                     margin: EdgeInsets.only(right: 20),
                     child: Text(
                       '4.0',
-                      style: TextStyle(fontSize: 52, fontWeight: FontWeight.w700, fontFamily: 'poppins'),
+                      style: TextStyle(
+                          fontSize: 52,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'poppins'),
                     ),
                   ),
                   Column(
@@ -113,10 +118,15 @@ class _ReviewsPageState extends State<ReviewsPage> with TickerProviderStateMixin
                     },
                     child: Text(
                       'all reviews',
-                      style: TextStyle(color: (_selectedTab == 0) ? Colors.white : Colors.grey),
+                      style: TextStyle(
+                          color:
+                              (_selectedTab == 0) ? Colors.white : Colors.grey),
                     ),
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)), backgroundColor: (_selectedTab == 0) ? AppColor.primary : Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      backgroundColor:
+                          (_selectedTab == 0) ? AppColor.primary : Colors.white,
                     ),
                   ),
                   ElevatedButton(
@@ -128,21 +138,28 @@ class _ReviewsPageState extends State<ReviewsPage> with TickerProviderStateMixin
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SvgPicture.asset('assets/icons/Star-active.svg', width: 14, height: 14),
+                        SvgPicture.asset('assets/icons/Star-active.svg',
+                            width: 14, height: 14),
                         Container(
                           margin: EdgeInsets.only(left: 4),
                           child: Text(
                             '1 (2)',
-                            style: TextStyle(color: (_selectedTab == 1) ? Colors.white : Colors.grey),
+                            style: TextStyle(
+                                color: (_selectedTab == 1)
+                                    ? Colors.white
+                                    : Colors.grey),
                           ),
                         ),
                       ],
                     ),
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: AppColor.border, shape: RoundedRectangleBorder(
+                      foregroundColor: AppColor.border,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                         side: BorderSide(color: AppColor.border, width: 1),
-                      ), backgroundColor: (_selectedTab == 1) ? AppColor.primary : Colors.white,
+                      ),
+                      backgroundColor:
+                          (_selectedTab == 1) ? AppColor.primary : Colors.white,
                       elevation: 0,
                     ),
                   ),
@@ -155,21 +172,28 @@ class _ReviewsPageState extends State<ReviewsPage> with TickerProviderStateMixin
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SvgPicture.asset('assets/icons/Star-active.svg', width: 14, height: 14),
+                        SvgPicture.asset('assets/icons/Star-active.svg',
+                            width: 14, height: 14),
                         Container(
                           margin: EdgeInsets.only(left: 4),
                           child: Text(
                             '2 (2)',
-                            style: TextStyle(color: (_selectedTab == 2) ? Colors.white : Colors.grey),
+                            style: TextStyle(
+                                color: (_selectedTab == 2)
+                                    ? Colors.white
+                                    : Colors.grey),
                           ),
                         ),
                       ],
                     ),
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: AppColor.border, shape: RoundedRectangleBorder(
+                      foregroundColor: AppColor.border,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                         side: BorderSide(color: AppColor.border, width: 1),
-                      ), backgroundColor: (_selectedTab == 2) ? AppColor.primary : Colors.white,
+                      ),
+                      backgroundColor:
+                          (_selectedTab == 2) ? AppColor.primary : Colors.white,
                       elevation: 0,
                     ),
                   ),
@@ -182,21 +206,28 @@ class _ReviewsPageState extends State<ReviewsPage> with TickerProviderStateMixin
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SvgPicture.asset('assets/icons/Star-active.svg', width: 14, height: 14),
+                        SvgPicture.asset('assets/icons/Star-active.svg',
+                            width: 14, height: 14),
                         Container(
                           margin: EdgeInsets.only(left: 4),
                           child: Text(
                             '3 (2)',
-                            style: TextStyle(color: (_selectedTab == 3) ? Colors.white : Colors.grey),
+                            style: TextStyle(
+                                color: (_selectedTab == 3)
+                                    ? Colors.white
+                                    : Colors.grey),
                           ),
                         ),
                       ],
                     ),
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: AppColor.border, shape: RoundedRectangleBorder(
+                      foregroundColor: AppColor.border,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                         side: BorderSide(color: AppColor.border, width: 1),
-                      ), backgroundColor: (_selectedTab == 3) ? AppColor.primary : Colors.white,
+                      ),
+                      backgroundColor:
+                          (_selectedTab == 3) ? AppColor.primary : Colors.white,
                       elevation: 0,
                     ),
                   ),
@@ -209,21 +240,28 @@ class _ReviewsPageState extends State<ReviewsPage> with TickerProviderStateMixin
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SvgPicture.asset('assets/icons/Star-active.svg', width: 14, height: 14),
+                        SvgPicture.asset('assets/icons/Star-active.svg',
+                            width: 14, height: 14),
                         Container(
                           margin: EdgeInsets.only(left: 4),
                           child: Text(
                             '4 (2)',
-                            style: TextStyle(color: (_selectedTab == 4) ? Colors.white : Colors.grey),
+                            style: TextStyle(
+                                color: (_selectedTab == 4)
+                                    ? Colors.white
+                                    : Colors.grey),
                           ),
                         ),
                       ],
                     ),
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: AppColor.border, shape: RoundedRectangleBorder(
+                      foregroundColor: AppColor.border,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                         side: BorderSide(color: AppColor.border, width: 1),
-                      ), backgroundColor: (_selectedTab == 4) ? AppColor.primary : Colors.white,
+                      ),
+                      backgroundColor:
+                          (_selectedTab == 4) ? AppColor.primary : Colors.white,
                       elevation: 0,
                     ),
                   ),
@@ -236,21 +274,28 @@ class _ReviewsPageState extends State<ReviewsPage> with TickerProviderStateMixin
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SvgPicture.asset('assets/icons/Star-active.svg', width: 14, height: 14),
+                        SvgPicture.asset('assets/icons/Star-active.svg',
+                            width: 14, height: 14),
                         Container(
                           margin: EdgeInsets.only(left: 4),
                           child: Text(
                             '5 (2)',
-                            style: TextStyle(color: (_selectedTab == 5) ? Colors.white : Colors.grey),
+                            style: TextStyle(
+                                color: (_selectedTab == 5)
+                                    ? Colors.white
+                                    : Colors.grey),
                           ),
                         ),
                       ],
                     ),
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: AppColor.border, shape: RoundedRectangleBorder(
+                      foregroundColor: AppColor.border,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                         side: BorderSide(color: AppColor.border, width: 1),
-                      ), backgroundColor: (_selectedTab == 5) ? AppColor.primary : Colors.white,
+                      ),
+                      backgroundColor:
+                          (_selectedTab == 5) ? AppColor.primary : Colors.white,
                       elevation: 0,
                     ),
                   ),
@@ -266,7 +311,8 @@ class _ReviewsPageState extends State<ReviewsPage> with TickerProviderStateMixin
                   shrinkWrap: true,
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                   physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => ReviewTile(review: widget.reviews[index]),
+                  itemBuilder: (context, index) =>
+                      ReviewTile(review: widget.reviews[index]),
                   separatorBuilder: (context, index) => SizedBox(height: 16),
                   itemCount: widget.reviews.length,
                 ),

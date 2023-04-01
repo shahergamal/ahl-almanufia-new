@@ -13,10 +13,9 @@ class AddProductsservices extends StatefulWidget {
 
 class _AddProductsservicesState extends State<AddProductsservices> {
   final TextEditingController titlecontroller = TextEditingController();
-
   final TextEditingController desccontroller = TextEditingController();
-
   final TextEditingController pricecontroller = TextEditingController();
+  final TextEditingController oldpricecontroller = TextEditingController();
 
   List categoryItems = [
     'cat name 1',
@@ -167,7 +166,7 @@ class _AddProductsservicesState extends State<AddProductsservices> {
                   TextFormField(
                     keyboardType: TextInputType.numberWithOptions(
                         decimal: true, signed: true),
-                    controller: pricecontroller,
+                    controller: oldpricecontroller,
                     autofocus: false,
                     decoration: InputDecoration(
                       hintText: 'old price',

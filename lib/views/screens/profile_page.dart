@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:marketky/constant/app_color.dart';
 import 'package:marketky/views/screens/addproducts_services.dart';
-import 'package:marketky/views/widgets/main_app_bar_widget.dart';
 import 'package:marketky/views/widgets/menu_tile_widget.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -14,38 +14,39 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBar(
-        cartValue: 2,
-        chatValue: 2,
-      ),
       body: ListView(
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         children: [
           // Section 1 - Profile Picture - Username - Name
-          Stack(children: [
-            Container(
+          Container(
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+            child: Container(
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/categoryimg/b_g_app.jpeg'),
+                  image: AssetImage('assets/images/background.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
               child: Column(
                 children: [
                   // Profile Picture
-                  Container(
-                    width: 96,
-                    height: 96,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: Colors.grey,
-                      image: DecorationImage(
-                        image: AssetImage(
-                            'assets/categoryimg/315816383_1694904404296838_1303252134949829974_n.jpg'),
-                        fit: BoxFit.cover,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 96,
+                      height: 96,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.grey,
+                        image: DecorationImage(
+                          image: AssetImage(
+                              'assets/categoryimg/315816383_1694904404296838_1303252134949829974_n.jpg'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -53,7 +54,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Container(
                     margin: EdgeInsets.only(bottom: 4, top: 14),
                     child: Text(
-                      'Shaher gamal',
+                      'shaher gamal',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
@@ -61,15 +62,18 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                   // Username
-                  Text(
-                    'shahergamalaboali@gmail.com',
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.6), fontSize: 14),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      'shahergamalaboali@gmail.com',
+                      style: TextStyle(
+                          color: Colors.grey.withOpacity(0.8), fontSize: 14),
+                    ),
                   ),
                 ],
               ),
             ),
-          ]),
+          ),
           // Section 2 - Account Menu
           Container(
             width: MediaQuery.of(context).size.width,
@@ -90,10 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 MenuTileWidget(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: ((context) {
-                      return AddProductsservices();
-                    })));
+                    Get.toNamed("/AddProductsservices");
                   },
                   margin: EdgeInsets.only(top: 10),
                   icon: Icon(
@@ -106,30 +107,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 MenuTileWidget(
                   onTap: () {},
                   margin: EdgeInsets.only(top: 10),
+                  icon: Icon(
+                    Icons.business_center_outlined,
+                    color: Colors.black.withOpacity(0.5),
+                  ),
+                  title: 'Status of your Products and Services',
+                ),
+                MenuTileWidget(
+                  onTap: () {},
+                  margin: EdgeInsets.only(top: 10),
                   icon: SvgPicture.asset(
                     'assets/icons/Heart.svg',
                     color: AppColor.secondary.withOpacity(0.5),
                   ),
-                  title: 'Wishlist',
-                  subtitle: 'Lorem ipsum Dolor sit Amet',
-                ),
-                MenuTileWidget(
-                  onTap: () {},
-                  icon: SvgPicture.asset(
-                    'assets/icons/Show.svg',
-                    color: AppColor.secondary.withOpacity(0.5),
-                  ),
-                  title: 'Last Seen',
-                  subtitle: 'Lorem ipsum Dolor sit Amet',
-                ),
-                MenuTileWidget(
-                  onTap: () {},
-                  icon: SvgPicture.asset(
-                    'assets/icons/Heart.svg',
-                    color: AppColor.secondary.withOpacity(0.5),
-                  ),
-                  title: 'Wishlist',
-                  subtitle: 'Lorem ipsum Dolor sit Amet',
+                  title: 'Wishlist ❤️',
                 ),
                 MenuTileWidget(
                   onTap: () {},
@@ -138,25 +129,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: AppColor.secondary.withOpacity(0.5),
                   ),
                   title: 'Orders',
-                  subtitle: 'Lorem ipsum Dolor sit Amet',
-                ),
-                MenuTileWidget(
-                  onTap: () {},
-                  icon: SvgPicture.asset(
-                    'assets/icons/Wallet.svg',
-                    color: AppColor.secondary.withOpacity(0.5),
-                  ),
-                  title: 'Wallet',
-                  subtitle: 'Lorem ipsum Dolor sit Amet',
-                ),
-                MenuTileWidget(
-                  onTap: () {},
-                  icon: SvgPicture.asset(
-                    'assets/icons/Location.svg',
-                    color: AppColor.secondary.withOpacity(0.5),
-                  ),
-                  title: 'Addresses',
-                  subtitle: 'Lorem ipsum Dolor sit Amet',
                 ),
               ],
             ),
@@ -184,12 +156,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 MenuTileWidget(
                   onTap: () {},
                   margin: EdgeInsets.only(top: 10),
+                  icon: Icon(
+                    Icons.edit,
+                    color: Colors.black.withOpacity(0.5),
+                  ),
+                  title: 'Modify your data',
+                ),
+                MenuTileWidget(
+                  onTap: () {},
+                  margin: EdgeInsets.only(top: 10),
                   icon: SvgPicture.asset(
                     'assets/icons/Filter.svg',
                     color: AppColor.secondary.withOpacity(0.5),
                   ),
                   title: 'Languages',
-                  subtitle: 'Lorem ipsum Dolor sit Amet',
                 ),
                 MenuTileWidget(
                   onTap: () {},

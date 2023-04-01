@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:marketky/api_constants.dart';
 import 'package:marketky/constant/app_color.dart';
 import 'package:marketky/constant/constants.dart';
 import 'package:marketky/core/model/category_model.dart';
 import 'package:marketky/core/model/product_model.dart';
-import 'package:marketky/views/screens/login_page.dart';
 import 'package:http/http.dart' as http;
 
 class WelcomePage extends StatefulWidget {
@@ -37,7 +37,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 Container(
                   margin: EdgeInsets.only(bottom: 12),
                   child: Text(
-                    'Ahl almanufia',
+                    '1'.tr,
                     style: TextStyle(
                       color: AppColor.secondary,
                       fontWeight: FontWeight.w700,
@@ -47,7 +47,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ),
                 Text(
-                  'Enjoy the best shopping experience with Ahl,\n you will find all services and products in one place.',
+                  '2'.tr,
                   style: TextStyle(
                     color: AppColor.secondary.withOpacity(0.7),
                     fontSize: 16,
@@ -63,11 +63,10 @@ class _WelcomePageState extends State<WelcomePage> {
               margin: EdgeInsets.only(bottom: 16),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => LoginPage()));
+                  Get.toNamed("/LoginPage");
                 },
                 child: Text(
-                  'Get Started',
+                  '3'.tr,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
@@ -101,6 +100,16 @@ class _WelcomePageState extends State<WelcomePage> {
         var cat = CategoryModel.fromjson(map);
         categories.add(cat);
       }
+    } else if (response.statusCode == 502) {
+      return Center(
+        child: const CircularProgressIndicator(
+          color: AppColor.primary,
+        ),
+      );
+    } else {
+      return const CircularProgressIndicator(
+        color: AppColor.primary,
+      );
     }
   }
 
@@ -115,7 +124,18 @@ class _WelcomePageState extends State<WelcomePage> {
       for (var map in data) {
         var product = ProductModel.fromjson(map);
         products.add(product);
+        print(products.length);
       }
+    } else if (response.statusCode == 502) {
+      return Center(
+        child: const CircularProgressIndicator(
+          color: AppColor.primary,
+        ),
+      );
+    } else {
+      return const CircularProgressIndicator(
+        color: AppColor.primary,
+      );
     }
   }
 

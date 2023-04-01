@@ -3,9 +3,11 @@ import 'package:marketky/constant/app_color.dart';
 import 'package:marketky/core/model/ExploreItem.dart';
 import 'package:marketky/core/model/ExploreUpdate.dart';
 import 'package:marketky/core/services/ExploreService.dart';
-import 'package:marketky/views/widgets/explore_card_widget.dart';
+import 'package:marketky/views/widgets/custom_categorycard_Feed.dart';
 import 'package:marketky/views/widgets/main_app_bar_widget.dart';
-import 'package:marketky/views/widgets/update_card_widget.dart';
+
+import '../../constant/constants.dart';
+import '../widgets/item_card.dart';
 
 class FeedsPage extends StatefulWidget {
   @override
@@ -15,7 +17,8 @@ class FeedsPage extends StatefulWidget {
 class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
   TabController tabController;
   List<ExploreItem> listExploreItem = ExploreService.listExploreItem;
-  List<ExploreUpdate> listExploreUpdateItem = ExploreService.listExploreUpdateItem;
+  List<ExploreUpdate> listExploreUpdateItem =
+      ExploreService.listExploreUpdateItem;
 
   @override
   void initState() {
@@ -38,7 +41,7 @@ class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
           Container(
             width: MediaQuery.of(context).size.width,
             height: 60,
-            color: AppColor.secondary,
+            color: AppColor.primary,
             child: TabBar(
               onTap: (index) {
                 setState(() {
@@ -48,15 +51,20 @@ class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
               controller: tabController,
               indicatorColor: AppColor.accent,
               indicatorWeight: 5,
-              unselectedLabelColor: Colors.white.withOpacity(0.5),
-              labelStyle: TextStyle(fontWeight: FontWeight.w500, fontFamily: 'poppins'),
-              unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w400, fontFamily: 'poppins'),
+              unselectedLabelColor: Colors.grey,
+              labelColor: Colors.white,
+              labelStyle: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'poppins',
+                  fontSize: 16),
+              unselectedLabelStyle:
+                  TextStyle(fontWeight: FontWeight.w400, fontFamily: 'poppins'),
               tabs: [
                 Tab(
-                  text: 'Update',
+                  text: 'All Services',
                 ),
                 Tab(
-                  text: 'Explore',
+                  text: 'All Products',
                 ),
               ],
             ),
@@ -65,31 +73,39 @@ class _FeedsPageState extends State<FeedsPage> with TickerProviderStateMixin {
           IndexedStack(
             index: tabController.index,
             children: [
-              // Tab 1 - Update
-              ListView.separated(
-                itemCount: 2,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return UpdateCardWidget(
-                    data: listExploreUpdateItem[index],
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return SizedBox(
-                    height: 24,
-                  );
-                },
+              // Tab 1 - category
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 12),
+                child: Wrap(
+                  spacing: 16,
+                  runSpacing: 16,
+                  children: List.generate(
+                    categories.length,
+                    (index) {
+                      return CustomcategorycardFeed(
+                        category: categories[index],
+                        customimage:
+                            AssetImage('assets/categoryimg/مستشفيات2022.jpg'),
+                        customtext: categories[index].name,
+                      );
+                    },
+                  ),
+                ),
               ),
-              // Tab 2 - Explore
-              GridView.count(
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                childAspectRatio: 1 / 1,
-                physics: NeverScrollableScrollPhysics(),
-                children: List.generate(listExploreItem.length, (index) {
-                  return ExploreCardWidget(data: listExploreItem[index]);
-                }),
+              // Tab 2 - product
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Wrap(
+                  spacing: 16,
+                  runSpacing: 16,
+                  children: List.generate(
+                    products.length,
+                    (index) => ItemCard(
+                      product: products[index],
+                      titleColor: Colors.black,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

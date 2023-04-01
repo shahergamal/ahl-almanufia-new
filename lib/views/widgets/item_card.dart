@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:marketky/constant/app_color.dart';
+import 'package:marketky/constant/dimentions.dart';
 import 'package:marketky/core/model/product_model.dart';
+import 'package:marketky/views/screens/product_detail.dart';
 import 'package:marketky/views/widgets/rating_tag.dart';
 import 'package:pecahan_rupiah/pecahan_rupiah.dart';
+
+//create avariable as ProductModel
+//ingect as (product.name )
 
 class ItemCard extends StatelessWidget {
   final ProductModel product;
@@ -11,18 +18,14 @@ class ItemCard extends StatelessWidget {
   ItemCard({
     @required this.product,
     this.titleColor = Colors.white,
-    this.priceColor = Colors.orange,
+    this.priceColor = AppColor.primary,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        /*
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return ProductDetail(product: product);
-        }));
-        */
+        Get.to(ProductDetail(product: product));
       },
       child: Container(
         width: MediaQuery.of(context).size.width / 2 - 16 - 8,
@@ -34,22 +37,34 @@ class ItemCard extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width / 2 - 16 - 8,
               height: MediaQuery.of(context).size.width / 2 - 16 - 8,
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.only(
+                top: Dimentions.height10,
+                bottom: Dimentions.height10,
+                left: Dimentions.width10,
+                right: Dimentions.width10,
+              ),
               alignment: Alignment.topLeft,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(Dimentions.radius20 / 2),
                 image: DecorationImage(
-                  image:
-                      NetworkImage(product.mainImage),
+                  image: NetworkImage(product.mainImage),
                   fit: BoxFit.cover,
                 ),
+                border: Border.all(
+                  color: Colors.grey,
+                ),
               ),
-              child: RatingTag(value: product.rating.toDouble()),
+              child: RatingTag(
+                value: product.rating.toDouble(),
+              ),
             ),
 
             // item details
             Container(
-              padding: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+              padding: EdgeInsets.symmetric(
+                vertical: Dimentions.height15,
+                horizontal: Dimentions.width10,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,33 +72,26 @@ class ItemCard extends StatelessWidget {
                   Text(
                     '${product.name}',
                     style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      color: titleColor,
-                    ),
+                        fontSize: Dimentions.font20 / 1.5,
+                        fontWeight: FontWeight.w700,
+                        color: titleColor,
+                        overflow: TextOverflow.ellipsis),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 2, bottom: 8),
+                    margin: EdgeInsets.only(top: Dimentions.height10/3, bottom: Dimentions.height10),
                     child: Text(
                       '${Pecahan.rupiah(value: product.price.toInt(), withRp: true)}',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: Dimentions.font16,
                         fontWeight: FontWeight.w700,
                         fontFamily: 'Poppins',
                         color: priceColor,
                       ),
                     ),
                   ),
-                  Text(
-                    '${product.metaTitle}',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 10,
-                    ),
-                  )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -15,7 +15,12 @@ class RatingTag extends StatelessWidget {
     return Container(
       width: 50,
       margin: margin,
-      padding: EdgeInsets.only(top: 4, bottom: 4, left: 5, right: 8),
+      padding: EdgeInsets.only(
+        top: 4,
+        bottom: 4,
+        left: 5,
+        right: 8,
+      ),
       decoration: BoxDecoration(
         color: AppColor.secondary,
         borderRadius: BorderRadius.circular(8),

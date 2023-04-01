@@ -11,7 +11,7 @@ steps:
 6>> value
 */
 class AppColor {
-  static const Color primary = Colors.black;
+  static const Color primary = Color(0xFF242476);
   static const Color primarySoft = Color(0xFFEAEAF2);
   static const Color secondary = Colors.black;
   static const Color accent = Color(0xFFFABA3E);

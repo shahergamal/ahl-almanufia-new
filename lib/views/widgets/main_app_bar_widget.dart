@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:marketky/constant/app_color.dart';
 import 'package:marketky/views/screens/cart_page.dart';
-import 'package:marketky/views/screens/message_page.dart';
 import 'package:marketky/views/screens/search_page.dart';
 import 'package:marketky/views/widgets/custom_icon_button_widget.dart';
 import 'package:marketky/views/widgets/dummy_search_widget2.dart';
@@ -45,7 +44,8 @@ class _MainAppBarState extends State<MainAppBar> {
           ),
           CustomIconButtonWidget(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartPage()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => CartPage()));
             },
             value: widget.cartValue,
             margin: EdgeInsets.only(left: 16),
@@ -54,9 +54,10 @@ class _MainAppBarState extends State<MainAppBar> {
               color: Colors.white,
             ),
           ),
-          CustomIconButtonWidget(
+         /* CustomIconButtonWidget(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => MessagePage()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => MessagePage()));
             },
             value: widget.chatValue,
             margin: EdgeInsets.only(left: 16),
@@ -64,9 +65,10 @@ class _MainAppBarState extends State<MainAppBar> {
               'assets/icons/Chat.svg',
               color: Colors.white,
             ),
-          ),
+          ),*/
         ],
-      ), systemOverlayStyle: SystemUiOverlayStyle.light,
+      ),
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
     );
   }
 }

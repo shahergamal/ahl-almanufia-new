@@ -13,7 +13,8 @@ class NotificationPage extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPage> {
-  List<UserNotification> listNotification = NotificationService.listNotification;
+  List<UserNotification> listNotification =
+      NotificationService.listNotification;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +34,7 @@ class _NotificationPageState extends State<NotificationPage> {
               color: AppColor.secondary.withOpacity(0.5),
             ),
             title: 'Product Promo',
-            subtitle: 'Lorem ipsum Dolor sit Amet',
+            subtitle: 'Discounts on products',
           ),
           MenuTileWidget(
             onTap: () {},
@@ -41,37 +42,24 @@ class _NotificationPageState extends State<NotificationPage> {
               'assets/icons/Info Square.svg',
               color: AppColor.secondary.withOpacity(0.5),
             ),
-            title: 'Marketky Info',
-            subtitle: 'Lorem ipsum Dolor sit Amet',
+            title: 'Ahl almanufia info',
+            subtitle: 'Know more about the services provided in Ahl almanufia',
           ),
           // Section 2 - Status ( LIST )
           Container(
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.symmetric(vertical: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 16, bottom: 8),
-                  child: Text(
-                    'ORDERS STATUS',
-                    style: TextStyle(color: AppColor.secondary.withOpacity(0.5), letterSpacing: 6 / 100, fontWeight: FontWeight.w600),
-                  ),
-                ),
-                ListView.builder(
-                  itemBuilder: (context, index) {
-                    return NotificationTile(
-                      data: listNotification[index],
-                      onTap: () {},
-                    );
-                  },
-                  itemCount: listNotification.length,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                ),
-              ],
+            child: Container(
+              margin: EdgeInsets.only(left: 16, bottom: 8),
+              child: Text(
+                'Your Wishlist',
+                style: TextStyle(
+                    color: AppColor.secondary.withOpacity(0.5),
+                    letterSpacing: 6 / 100,
+                    fontWeight: FontWeight.w600),
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
